@@ -63,12 +63,16 @@
     methods: {
       async buscaInvocador() {
         this.loading = true
-        let options = {
+        
+        const options = {
           headers: {
-            "X-Riot-Token": "RGAPI-a1ef5414-43ea-44cf-bfeb-3cfd222d67c4",
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
+            "Upgrade-Insecure-Requests": "1",
           }
         }
-        Vue.axios.get("https://br1.api.riotgames.com/lol/summoner/v4/summoners/by-name/itchiteui", options).then((response) => {
+        
+        Vue.axios.get("lol/summoner/v4/summoners/by-name/itchiteui?api_key=RGAPI-30efd25c-5868-4ba2-9c91-77e8e5c2d599", options).then((response) => {
           console.log(response.data)
         })
       }
