@@ -56,24 +56,25 @@
       drawer: false,
       loading: false,
       invocador: null,
+      dados: null
     }),
     created () {
       this.$vuetify.theme.dark = true
     },
     methods: {
       async buscaInvocador() {
+        if(!this.invocador) return false
+
         this.loading = true
-        
-        const options = {
-          headers: {
-            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
-            "Accept-Language": "pt-BR,pt;q=0.9,en-US;q=0.8,en;q=0.7",
-            "Upgrade-Insecure-Requests": "1",
+
+        let options =  {
+          headers : {
+            "usuario": this.invocador
           }
         }
         
-        Vue.axios.get("lol/summoner/v4/summoners/by-name/itchiteui?api_key=RGAPI-30efd25c-5868-4ba2-9c91-77e8e5c2d599", options).then((response) => {
-          console.log(response.data)
+        Vue.axios.get("/", options).then((response) => {
+          console.log(response)
         })
       }
     }
